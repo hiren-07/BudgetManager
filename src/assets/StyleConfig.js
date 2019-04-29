@@ -1,6 +1,7 @@
 import {Dimensions, Platform, NativeModules, PixelRatio} from 'react-native';
 var RNDeviceInfo = NativeModules.RNDeviceInfo;
 const {width,height} = Dimensions.get('window');
+const isIphone = Platform.OS === "ios"
 const widthPer = width /100 ;
 const heightPer = height /100 ;
 const ratioCount = Math.sqrt(height * height + width * width) /1000 ;
@@ -8,11 +9,19 @@ const pixelDensity = PixelRatio.get();
 const adjustedWidth = width * pixelDensity ;
 const adjustedHeight = height * pixelDensity ;
 const isTablet=()=> {
-    if ( Platform.OS === 'ios' ){
+    if ( isIphone ){
         return Platform.isPad ;
     }else {
         return (height/width) <= 1.6
     }
+}
+const APP_FONTS = {
+    LATO_LIGHT: isIphone ? "Lato-Light" : 'lato_light',
+    LATO_REGULAR: isIphone ? "Lato-Regular" : 'lato_regular',
+    LATO_MEDIUM: isIphone ? "Lato-Medium" : 'lato_medium',
+    LATO_BOLD: isIphone ? "Lato-Bold" : "lato_bold",
+    LATO_ITALIC: isIphone ? "Lato-Italic" : 'lato_italic'
+
 }
 export default {
     countPixelRatio:(size) => size * ratioCount ,
@@ -21,27 +30,31 @@ export default {
     getFont:(type)=>{
         switch (type) {
             case "light":
-                return "Lato-Light"
+                return APP_FONTS.LATO_LIGHT
             case "regular":
-                return "Lato-Regular"
+                return APP_FONTS.LATO_REGULAR
             case "medium":
-                return "Lato-Medium"
+                return APP_FONTS.LATO_MEDIUM
             case "bold":
-                return "Lato-Bold"
+                return APP_FONTS.LATO_BOLD
             case "italic":
-                return "Lato-Italic"
+                return APP_FONTS.LATO_ITALIC
             default:
-                return "Lato-Regular"
+                return APP_FONTS.LATO_REGULAR
         }
     },
-    fontLight: "Lato-Light",
-    fontRegular: "Lato-Regular",
-    fontMedium: "Lato-Medium",
-    fontBold: "Lato-Bold",
-    fontItalic: "Lato-Italic",
+    fontLight: APP_FONTS.LATO_LIGHT,
+    fontRegular: APP_FONTS.LATO_REGULAR,
+    fontMedium: APP_FONTS.LATO_MEDIUM,
+    fontBold: APP_FONTS.LATO_BOLD,
+    fontItalic: APP_FONTS.LATO_ITALIC,
 
     width,
     height,
     isPhone: !isTablet(),
     isTab: isTablet(),
+    isIphone,
+    COLOR:{
+        THEME:'#0093BA'
+    }
 }

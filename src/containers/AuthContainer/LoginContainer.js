@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
 import {
     View,
-    StyleSheet
+    StyleSheet,
+    ImageBackground
 } from 'react-native'
 import withToast from "../../redux/actionCreator/withToast";
 import withLoader from "../../redux/actionCreator/withLoader";
 import CText from '../../components/CText'
+import AppImages from '../../assets/images'
+import StyleConfig from '../../assets/StyleConfig'
 
 class LoginContainer extends Component{
 
@@ -28,7 +31,7 @@ class LoginContainer extends Component{
     }
     render(){
         return(
-            <View style={style.container}>
+            <ImageBackground source = {AppImages.appBack1} style={styles.container}>
                 <CText style={styles.textStyle} onPress={()=> this.props.toast({text: 'This is Toast'})}>{'Toast Test'}</CText>
                 <CText style={styles.textStyle} onPress={()=> this.onLoader()}>{'Loader Test'}</CText>
                 <CText style={styles.textStyle} onPress={()=> this.props.navigation.navigate('Register')}>{'goto REGISTER'}</CText>
@@ -40,7 +43,7 @@ class LoginContainer extends Component{
                 <CText type={'bold'} style={styles.textStyle}>{'Login Container Bold'}</CText>
 
 
-            </View>
+            </ImageBackground>
         )
     }
 }
@@ -49,11 +52,12 @@ export default withLoader(withToast(LoginContainer))
 const styles=StyleSheet.create({
     container:{
         flex:1,
-        justifyContent:'center',
+        // justifyContent:'center',
         alignItems:'center'
     },
     textStyle:{
-        fontSize:16,
-        marginTop:16
+        fontSize:StyleConfig.countPixelRatio(22),
+        marginTop:StyleConfig.countPixelRatio(12),
+        color:'white'
     }
 })

@@ -4,13 +4,13 @@ import { createStackNavigator, createAppContainer } from "react-navigation";
 
 import LoginContainer from '../containers/AuthContainer/LoginContainer'
 import RegisterContainer from '../containers/AuthContainer/RegisterContainer'
-
+import StyleConfig from '../assets/StyleConfig'
 const AuthStack = createStackNavigator({
     Login: { screen : LoginContainer },
     Register: {screen: RegisterContainer}
 },{defaultNavigationOptions: {
         headerStyle: {
-            backgroundColor: '#008080',
+            backgroundColor: StyleConfig.COLOR.THEME,
         },
         headerTintColor: '#fff',
         headerTitleStyle: {
