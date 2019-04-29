@@ -31,7 +31,8 @@ class LoginContainer extends Component{
     }
     render(){
         return(
-            <ImageBackground source = {AppImages.appBack1} style={styles.container}>
+            <ImageBackground source = {AppImages.appBack2} style={styles.container}>
+                <View style={{flex:1, backgroundColor:'rgba(250,250,250,0.2)', alignItems:'center'}}>
                 <CText style={styles.textStyle} onPress={()=> this.props.toast({text: 'This is Toast'})}>{'Toast Test'}</CText>
                 <CText style={styles.textStyle} onPress={()=> this.onLoader()}>{'Loader Test'}</CText>
                 <CText style={styles.textStyle} onPress={()=> this.props.navigation.navigate('Register')}>{'goto REGISTER'}</CText>
@@ -41,7 +42,7 @@ class LoginContainer extends Component{
                 <CText type={'medium'} style={styles.textStyle}>{'Login Container Medium'}</CText>
                 <CText type={'italic'} style={styles.textStyle}>{'Login Container Italic'}</CText>
                 <CText type={'bold'} style={styles.textStyle}>{'Login Container Bold'}</CText>
-
+                </View>
 
             </ImageBackground>
         )
@@ -53,7 +54,7 @@ const styles=StyleSheet.create({
     container:{
         flex:1,
         // justifyContent:'center',
-        alignItems:'center'
+        // alignItems:'center'
     },
     textStyle:{
         fontSize:StyleConfig.countPixelRatio(22),
