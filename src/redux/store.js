@@ -5,12 +5,14 @@ import {
     toast,
     internetConn
 } from './reducers';
+import {reducer as formReducer} from 'redux-form';
 
 const store = createStore(
     combineReducers({
         loader,
         toast,
-        internetConn
+        internetConn,
+        form: formReducer
     }),
     undefined,
     compose(applyMiddleware(thunk))
