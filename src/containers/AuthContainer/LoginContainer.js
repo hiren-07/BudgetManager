@@ -9,7 +9,7 @@ import withLoader from "../../redux/actionCreator/withLoader";
 import CText from '../../components/CText'
 import AppImages from '../../assets/images'
 import StyleConfig from '../../assets/StyleConfig'
-
+import LoginForm from './LoginForm'
 class LoginContainer extends Component{
 
     // componentWillMount(){
@@ -29,19 +29,15 @@ class LoginContainer extends Component{
         //     that.props.loader(false)
         // },5000)
     }
+    _onSubmit=(values)=>{
+        //alert(JSON.stringify(values))
+        this.props.navigation.navigate('Register')
+    }
     render(){
         return(
             <ImageBackground source = {AppImages.appBack2} style={styles.container}>
                 <View style={styles.content}>
-                <CText style={styles.textStyle} onPress={()=> this.props.toast({text: 'This is Toast'})}>{'Toast Test'}</CText>
-                <CText style={styles.textStyle} onPress={()=> this.onLoader()}>{'Loader Test'}</CText>
-                <CText style={styles.textStyle} onPress={()=> this.props.navigation.navigate('Register')}>{'goto REGISTER'}</CText>
-
-                <CText type={'light'} style={styles.textStyle}>{'Login Container Light'}</CText>
-                <CText type={'regular'} style={styles.textStyle}>{'Login Container Regular'}</CText>
-                <CText type={'medium'} style={styles.textStyle}>{'Login Container Medium'}</CText>
-                <CText type={'italic'} style={styles.textStyle}>{'Login Container Italic'}</CText>
-                <CText type={'bold'} style={styles.textStyle}>{'Login Container Bold'}</CText>
+                    <LoginForm onSubmit={this._onSubmit}/>
                 </View>
 
             </ImageBackground>
@@ -54,7 +50,7 @@ const styles=StyleSheet.create({
     container:{
         flex:1
     },
-    content:{flex:1, backgroundColor:'rgba(250,250,250,0.2)', alignItems:'center', justifyContent:'center'},
+    content:{flex:1, backgroundColor:'rgba(250,250,250,0.5)', paddingHorizontal:StyleConfig.countPixelRatio(16)},
     textStyle:{
         fontSize:StyleConfig.countPixelRatio(22),
         marginTop:StyleConfig.countPixelRatio(12),

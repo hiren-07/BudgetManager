@@ -55,6 +55,25 @@ export default {
     isTab: isTablet(),
     isIphone,
     COLOR:{
-        THEME:'#0093BA'
+        // THEME_LIGHT:'#39796b',
+        // THEME:'#004d40',
+        // THEME_DARK:'#00251a',
+        THEME_LIGHT:'#5eb8ff',
+        THEME:'#0288d1',
+        THEME_DARK:'#005b9f',
+
+        WHITE:'#fff',
+        BLACK:'#000',
+        WHITE2: '#ddd',
+        BLACK2: '#333',
+        GREY_LIGHT:'#CFCFCF',
+        GREY:'#9E9E9E',
+        GREY_DARK:'#707070',
+        RED_LIGHT:'#f9683a',
+        RED:'#bf360c',
+        RED_DARK:'#870000',
+        GREEN_LIGHT:'#4c8c4a',
+        GREEN:'#1b5e20',
+        GREEN_DARK:'#003300'
     }
 }
