@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { View, ActivityIndicator, Modal,StyleSheet, Text, Platform } from 'react-native';
-import StyleConfig from '../../assets/StyleConfig'
+import StyleConfig from '../../assets/styles/StyleConfig'
 class Loader extends Component {
     constructor() {
         super(...arguments);

@@ -6,7 +6,8 @@ import {
     Text,
     ScrollView
 } from 'react-native'
-import StyleConfig from '../../assets/StyleConfig'
+import StyleConfig from '../../assets/styles/StyleConfig'
+import Styles from '../../assets/styles/Styles'
 import emailRegex from '../../helper/utils/index'
 import ReduxField from '../../components/ReduxField'
 import {reduxForm} from 'redux-form';
@@ -23,7 +24,7 @@ class RegisterForm extends Component {
             <View>
                 <View style={{height:StyleConfig.countPixelRatio(280)}} />
                 <View style={styles.screenTitleRow}>
-                    <Text style={styles.screenTitle}>{'SIGN IN'}</Text>
+                    <Text style={styles.screenTitle}>{'SIGN UP'}</Text>
                 </View>
                 <ReduxField
                     name="name"
@@ -97,8 +98,8 @@ class RegisterForm extends Component {
                     }}
                 />
                 <View style={styles.buttonRow}>
-                    <TouchableOpacity style={styles.buttonFull} onPress={handleSubmit(onSubmit)}>
-                        <Text style={styles.buttonFullText}>{'Sign In'}</Text>
+                    <TouchableOpacity style={Styles.buttonContainer} onPress={handleSubmit(onSubmit)}>
+                        <Text style={Styles.buttonText}>{'Sign Up'}</Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -146,61 +147,28 @@ const withForm = reduxForm({
 })
 export default withForm(RegisterForm)
 const styles = StyleSheet.create({
-        screenTitleRow:{
-            alignItems: 'center',
-            justifyContent: 'center',
-            marginVertical: 10
-        },
+    screenTitleRow:{
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginVertical: StyleConfig.countPixelRatio(10)
+    },
     screenTitle:{
-        color: StyleConfig.COLOR.WHITE,
+        color: StyleConfig.COLOR.THEME_DARK,
         fontFamily:StyleConfig.fontRegular,
-        fontSize: 18,
+        fontSize: StyleConfig.countPixelRatio(22),
     },
     inputStyle:{
         flex: 1,
         color:StyleConfig.COLOR.WHITE,
         fontFamily:StyleConfig.fontRegular,
-        fontSize:14,
+        fontSize: StyleConfig.countPixelRatio(14),
         letterSpacing:0.25,
         padding: 0,
-        marginBottom:8,
-        lineHeight:20
+        marginBottom: StyleConfig.countPixelRatio(8),
+        lineHeight: StyleConfig.countPixelRatio(20)
     },
     buttonRow:{
-        marginVertical: 20
+        marginVertical: StyleConfig.countPixelRatio(10)
     },
-    buttonFull: {
-        justifyContent:'center',
-        alignItems:'center',
-        width:'100%',
-        height: 40,
-        shadowColor: StyleConfig.COLOR.THEME,
-        shadowOffset:{ width: 0, height: 2 },
-        shadowOpacity: 0.25,
-        shadowRadius: 2,
-        backgroundColor:StyleConfig.COLOR.THEME,
-        elevation: 1
-    },
-    buttonFullText: {
-        fontFamily: StyleConfig.fontBold,
-        fontSize: 18,
-        lineHeight:20,
-        letterSpacing:1.5,
-        color:StyleConfig.COLOR.WHITE,
-        backgroundColor: 'transparent'
-    },
-    forgotRow: {
-        justifyContent:'center',
-        alignItems:'center',
-        width:'100%',
-        marginVertical:20
-    },
-    forgotText:{
-        color:StyleConfig.COLOR.WHITE,
-        fontFamily:StyleConfig.fontRegular,
-        fontSize: 14,
-        lineHeight:20,
-        letterSpacing:1
-    }
 
 })

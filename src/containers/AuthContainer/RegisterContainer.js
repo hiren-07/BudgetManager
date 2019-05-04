@@ -8,7 +8,7 @@ import withToast from "../../redux/actionCreator/withToast";
 import withLoader from "../../redux/actionCreator/withLoader";
 import CText from '../../components/CText'
 import AppImages from '../../assets/images'
-import StyleConfig from '../../assets/StyleConfig'
+import StyleConfig from '../../assets/styles/StyleConfig'
 import RegisterForm from './RegisterForm'
 class RegisterContainer extends Component{
 
@@ -50,7 +50,7 @@ const styles=StyleSheet.create({
     container:{
         flex:1
     },
-    content:{flex:1, backgroundColor:'rgba(250,250,250,0.1)', paddingHorizontal:StyleConfig.countPixelRatio(16)},
+    content:{flex:1, backgroundColor:'rgba(250,250,250,0.5)', paddingHorizontal:StyleConfig.countPixelRatio(16)},
     textStyle:{
         fontSize:StyleConfig.countPixelRatio(22),
         marginTop:StyleConfig.countPixelRatio(12),

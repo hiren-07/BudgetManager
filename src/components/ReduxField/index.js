@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { View, Text, TextInput, TouchableOpacity, Platform } from 'react-native';
 import { Field } from 'redux-form';
 import styles from './styles';
-import StyleConfig from '../../assets/StyleConfig'
+import StyleConfig from '../../assets/styles/StyleConfig'
 
 class CustomField extends Component {
     focusInput() {

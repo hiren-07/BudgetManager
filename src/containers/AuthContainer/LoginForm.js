@@ -6,7 +6,8 @@ import {
     Text,
     ScrollView
 } from 'react-native'
-import StyleConfig from '../../assets/StyleConfig'
+import StyleConfig from '../../assets/styles/StyleConfig'
+import Styles from '../../assets/styles/Styles'
 import emailRegex from '../../helper/utils/index'
 import ReduxField from '../../components/ReduxField'
 import {reduxForm} from 'redux-form';
@@ -17,11 +18,10 @@ class LoginForm extends Component {
     // }
 
     render() {
-        const { handleSubmit, onSubmit } = this.props;
+        const { handleSubmit, onSubmit, onSignUp } = this.props;
         return (
             <ScrollView>
             <View>
-                <View style={{height:StyleConfig.countPixelRatio(280)}} />
                 <View style={styles.screenTitleRow}>
                     <Text style={styles.screenTitle}>{'SIGN IN'}</Text>
                 </View>
@@ -54,19 +54,25 @@ class LoginForm extends Component {
                     autoCapitalize="none"
                     style={styles.inputStyle}
                     autoCorrect={false}
+                    type={'text'}
                     returnKeyType={"done"}
                     onSubmitEditing={() => {
                         // this.scrollRef.scrollTo({y: 0})
                     }}
                 />
                 <View style={styles.buttonRow}>
-                    <TouchableOpacity style={styles.buttonFull} onPress={handleSubmit(onSubmit)}>
-                        <Text style={styles.buttonFullText}>{'Sign In'}</Text>
+                    <TouchableOpacity style={Styles.buttonContainer} onPress={handleSubmit(onSubmit)}>
+                        <Text style={Styles.buttonText}>{'Sign In'}</Text>
                     </TouchableOpacity>
                 </View>
-                <View style={styles.forgotRow}>
-                    <Text style={styles.forgotText}>{'Forgot your password?'}</Text>
+                <View style={styles.buttonRow}>
+                    <TouchableOpacity style={Styles.buttonContainer} onPress={()=>alert('Register')}>
+                        <Text style={Styles.buttonText}>{'Sign Up'}</Text>
+                    </TouchableOpacity>
                 </View>
+                {/*<View style={styles.forgotRow}>*/}
+                    {/*<Text style={styles.forgotText}>{'Forgot your password?'}</Text>*/}
+                {/*</View>*/}
             </View>
             </ScrollView>
         )
@@ -74,8 +80,8 @@ class LoginForm extends Component {
 }
 
 const initialValues = {
-    email: '',
-    password: ''
+    email: 'hiren@gmail.com',
+    password: '123456'
 };
 const validate = values => {
     let errors = {};
@@ -100,60 +106,40 @@ const withForm = reduxForm({
 })
 export default withForm(LoginForm)
 const styles = StyleSheet.create({
-        screenTitleRow:{
-            alignItems: 'center',
-            justifyContent: 'center',
-            marginVertical: 10
-        },
+    screenTitleRow:{
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginVertical: StyleConfig.countPixelRatio(10)
+    },
     screenTitle:{
-        color: StyleConfig.COLOR.WHITE,
+        color: StyleConfig.COLOR.THEME_DARK,
         fontFamily:StyleConfig.fontRegular,
-        fontSize: 18,
+        fontSize: StyleConfig.countPixelRatio(22),
     },
     inputStyle:{
         flex: 1,
         color:StyleConfig.COLOR.WHITE,
         fontFamily:StyleConfig.fontRegular,
-        fontSize:14,
+        fontSize: StyleConfig.countPixelRatio(14),
         letterSpacing:0.25,
         padding: 0,
-        marginBottom:8,
-        lineHeight:20
+        marginBottom: StyleConfig.countPixelRatio(8),
+        lineHeight: StyleConfig.countPixelRatio(20)
     },
     buttonRow:{
-        marginVertical: 20
-    },
-    buttonFull: {
-        justifyContent:'center',
-        alignItems:'center',
-        width:'100%',
-        height: 40,
-        shadowColor: StyleConfig.COLOR.THEME,
-        shadowOffset:{ width: 0, height: 2 },
-        shadowOpacity: 0.25,
-        shadowRadius: 2,
-        backgroundColor:StyleConfig.COLOR.THEME,
-        elevation: 1
-    },
-    buttonFullText: {
-        fontFamily: StyleConfig.fontBold,
-        fontSize: 18,
-        lineHeight:20,
-        letterSpacing:1.5,
-        color:StyleConfig.COLOR.WHITE,
-        backgroundColor: 'transparent'
+        marginVertical: StyleConfig.countPixelRatio(10)
     },
     forgotRow: {
         justifyContent:'center',
         alignItems:'center',
         width:'100%',
-        marginVertical:20
+        marginVertical: StyleConfig.countPixelRatio(20)
     },
     forgotText:{
         color:StyleConfig.COLOR.WHITE,
         fontFamily:StyleConfig.fontRegular,
-        fontSize: 14,
-        lineHeight:20,
+        fontSize: StyleConfig.countPixelRatio(14) ,
+        lineHeight: StyleConfig.countPixelRatio(20),
         letterSpacing:1
     }
 

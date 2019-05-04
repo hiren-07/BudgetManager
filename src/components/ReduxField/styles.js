@@ -1,6 +1,6 @@
 import { StyleSheet, Platform, Dimensions } from 'react-native';
 const WINDOW = Dimensions.get('window');
-import StyleConfig from '../../assets/StyleConfig'
+import StyleConfig from '../../assets/styles/StyleConfig'
 
 const styles = StyleSheet.create({
     rootContainer: {

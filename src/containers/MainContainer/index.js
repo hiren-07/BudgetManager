@@ -4,7 +4,7 @@ import {
 } from 'react-native'
 import Loader from '../../components/reduxComponent/Loader'
 import Toast from '../../components/reduxComponent/Toast'
-import StyleConfig from '../../assets/StyleConfig'
+import StyleConfig from '../../assets/styles/StyleConfig'
 class MainContainer extends React.PureComponent{
     render(){
         return(
