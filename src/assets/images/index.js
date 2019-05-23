@@ -3,7 +3,12 @@ const AppImages={
     appBack2: require('./app_back4.jpeg'),
 
 
-    appLogo: require('./app_logo.png')
+    appLogo: require('./app_logo.png'),
+
+    splash: require('./UR/splash.png'),
+    ic_next: require('./UR/ic_next.png'),
+    header_back: require('./UR/header_back.png')
+
 }
 
 module.exports = AppImages

@@ -7,21 +7,18 @@ import LoginContainer from '../containers/AuthContainer/LoginContainer'
 import RegisterContainer from '../containers/AuthContainer/RegisterContainer'
 import StyleConfig from '../assets/styles/StyleConfig'
 
+
+import SplashScreen from '../containers/URContainer/SplashScreen'
+import MobileInputScreen from '../containers/URContainer/MobileInputScreen'
+import OTPInputScreen from '../containers/URContainer/OTPInputScreen'
+import MenuScreen from '../containers/URContainer/MenuScreen'
+
 const AuthStack = createStackNavigator({
-     AppIntro: { screen: AppIntro },
-    Login: { screen : LoginContainer },
-    Register: { screen: RegisterContainer }
-},
-    // {defaultNavigationOptions: {
-    //     headerStyle: {
-    //         backgroundColor: StyleConfig.COLOR.THEME,
-    //     },
-    //     headerTintColor: '#fff',
-    //     headerTitleStyle: {
-    //         fontWeight: 'bold',
-    //     },
-    // }},
-    {
+    SplashScreen:{screen:SplashScreen},
+    MobileInputScreen: {screen:MobileInputScreen},
+    OTPInputScreen: {screen:OTPInputScreen},
+    MenuScreen:{screen:MenuScreen}
+}, {
     headerMode: 'none'
 })
 
