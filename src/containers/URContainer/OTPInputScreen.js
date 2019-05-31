@@ -1,4 +1,5 @@
 import React from 'react'
+import firebase from 'react-native-firebase';
 import {Alert, Image, TouchableOpacity, View, ImageBackground, StyleSheet, TextInput} from 'react-native'
 import AppImages from '../../assets/images'
 import StyleConfig from "../../assets/styles/StyleConfig";
@@ -26,8 +27,22 @@ export default class OTPInputScreen extends React.PureComponent {
         console.log(JSON.stringify(otp))
         this.setState({otp})
     }
+    componentDidMount(){
+        this.requestForOtp()
+    }
+
+    requestForOtp=()=>{
+        firebase.auth().signInWithPhoneNumber('+919033343516')
+            .then(confirmResult => {
+                confirmResult.confirm('123456')
+                    .then(user => console.log('USER',user))
+                    .catch(error => console.log('error in OTP',error));
+            })// save confirm result to use with the manual verification code)
+            .catch(error => console.log('ERROR',error) );
+    }
 
     render() {
+        console.log(this.state.otp)
         return (
             <View style={styles.container}>
                 <ImageBackground source={AppImages.header_back} resizeMode={'contain'} style={styles.headerContent}>
@@ -42,17 +57,16 @@ export default class OTPInputScreen extends React.PureComponent {
                 </ImageBackground>
                 <View style={styles.content}>
                     <View style={styles.row1}>
-                        {ITEMS.map((item,ind)=>
                             <TextInput
-                                key={ind}
+                                // key={ind}
                                 style={styles.inputStyle}
-                                onChangeText={(val)=>this._onChangeText(val,ind)}
-                                value={this.state.otp[ind]}
+                                onChangeText={(val)=>this._onChangeText(val,0)}
+                                value={this.state.otp[0]}
                                 underlineColorAndroid={'transparent'}
                                 keyboardType={'phone-pad'}
                                 maxLength={1}
                             />
-                        )}
+
 
                     </View>
                 </View>
@@ -81,7 +95,7 @@ const styles = StyleSheet.create({
     content:{height: '65%',  marginHorizontal:StyleConfig.countPixelRatio(20), backgroundColor: '#fff'},
     row1:{ flexDirection:'row', marginTop:StyleConfig.countPixelRatio(20), alignItems:'center', },
     textPrefix:{ fontSize:StyleConfig.countPixelRatio(22)},
-    inputStyle:{ textAlign: 'center', borderColor: StyleConfig.COLOR.RED_LIGHT, borderBottomWidth: 1,height:40, width: 24, marginLeft:StyleConfig.countPixelRatio(6), fontFamily:StyleConfig.fontMedium, fontSize:StyleConfig.countPixelRatio(22), },
+    inputStyle:{},//{ textAlign: 'center', borderColor: StyleConfig.COLOR.RED_LIGHT, borderBottomWidth: 1,height:40, minWidth: 24,  fontFamily:StyleConfig.fontMedium, fontSize:StyleConfig.countPixelRatio(22), },
     errorText:{color:'red'}
 
 })
