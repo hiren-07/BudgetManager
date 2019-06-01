@@ -7,7 +7,8 @@ const AppImages={
 
     splash: require('./UR/splash.png'),
     ic_next: require('./UR/ic_next.png'),
-    header_back: require('./UR/header_back.png')
+    header_back: require('./UR/header_back.png'),
+    ic_right: require('./UR/ic_right.png')
 
 }
 

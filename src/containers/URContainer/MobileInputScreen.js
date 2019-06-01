@@ -5,14 +5,14 @@ import StyleConfig from "../../assets/styles/StyleConfig";
 import CText from "../../components/CText";
 
 export default class MobileInputScreen extends React.PureComponent {
-    state={ text:'1112223331', msg:''}
+    state={ text:'', msg:''}
     _onNextPress = () => {
         const {navigation} = this.props
         const { text } = this.state
         if(text.length > 12 || text.length < 10){
             this.setState({msg:'Invalid Phone Number'})
         }else{
-            Alert.alert('', 'We will be verifying the phone number:\n +91 12345 67899\n\nIs this OK, or would you like to edit the number?', [{
+            Alert.alert('', 'We will be verifying the phone number:\n +91 '+text+'\n\nIs this OK, or would you like to edit the number?', [{
                 text: 'EDIT',
                 onPress: () => {
 
@@ -20,7 +20,7 @@ export default class MobileInputScreen extends React.PureComponent {
             },{
                 text:'OK',
                 onPress:()=>{
-                    navigation.navigate('OTPInputScreen')
+                    navigation.navigate('OTPInputScreen',{phone:text})
                 }
             }]);
         }

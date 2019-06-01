@@ -17,7 +17,8 @@ const AuthStack = createStackNavigator({
     SplashScreen:{screen:SplashScreen},
     MobileInputScreen: {screen:MobileInputScreen},
     OTPInputScreen: {screen:OTPInputScreen},
-    MenuScreen:{screen:MenuScreen}
+    MenuScreen:{screen:MenuScreen},
+
 }, {
     headerMode: 'none'
 })

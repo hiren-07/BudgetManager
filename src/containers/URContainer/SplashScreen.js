@@ -10,7 +10,7 @@ export default class SplashScreen extends React.PureComponent {
     }
     render(){
         return (
-            <ImageBackground resizeMode={'contain'} source={AppImages.splash} style={{flex:1, backgroundColor:'#f00'}}/>
+            <ImageBackground resizeMode={'cover'} source={AppImages.splash} style={{flex:1, backgroundColor:'#f00'}}/>
         )
     }
 }
